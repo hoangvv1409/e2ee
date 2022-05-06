@@ -1,6 +1,7 @@
 from enigma.diffie_hellman import DiffieHellman
 from enigma.cipher import encrypt, decrypt
 
+
 alice = DiffieHellman()
 bob = DiffieHellman()
 
@@ -15,10 +16,12 @@ bob_shared = bob.generate_shared_key(alice_public)
 assert alice_shared == bob_shared
 
 message = "Random message"
+print(f"Encrypting {message}")
 encrypted_message = encrypt(message, alice_shared)
 
-print(encrypted_message)
+print(f"Origin message {message} encrypted as {encrypted_message}")
 
+print(f"Decrypting: {encrypted_message}")
 decrypted_message = decrypt(encrypted_message, bob_shared)
 
-print(decrypted_message)
+print(f"Result: {decrypted_message}")
